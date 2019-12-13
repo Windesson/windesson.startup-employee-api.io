@@ -79,7 +79,7 @@ function generateModel($card, person){
                 <p class="modal-text cap">${person.location.city}</p>
                 <hr>
                 <p class="modal-text">${person.phone}</p>
-                <p class="modal-text">${person.location.street.number} ${person.location.street.name}, ${person.location.city} ${person.location.country}</p>
+                <p class="modal-text">${person.location.street.number} ${person.location.street.name}, ${person.location.city} ${person.location.state}</p>
                 <p class="modal-text">Birthday: ${birthday}</p>
             </div>
         </div>
@@ -93,8 +93,12 @@ function generateModel($card, person){
 
     $('body').append($model);
     $('#modal-close-btn').click(() => {
-        $('.modal-container').remove()}
-    );
+        $('.modal-container').remove()
+    });
+
+    $(document).keyup(function(e) {
+        if (e.keyCode === 27) $('.modal-container').remove() // esc
+      });
     
     $('#modal-next').click(() => {
         $('.modal-container').remove();
